@@ -4,6 +4,100 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
+
+const list = [
+  {
+    label: 'Create Report',
+    disabled: true,
+    devider: false
+  },
+  {
+    label: 'Create Inventory',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Insert Results as Comments',
+    disabled: true,
+    devider: false
+  },
+  {
+    label: 'Remove pdfToolbox Comments...',
+    disabled: false,
+    devider: true
+  },
+  {
+    label: 'Create Check...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Create Process Plan...',
+    disabled: true,
+    devider: false
+  },
+  {
+    label: 'Edit Check...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Duplicate Check...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Delete Check...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Export Profile...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Export Profile...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Import Profile...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Create Profile Summary...',
+    disabled: false,
+    devider: true
+  },
+  {
+    label: 'Log Profile Execution...',
+    disabled: false,
+    devider: true
+  },
+  {
+    label: 'Search Libraries...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Manage Libraries...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Export Library...',
+    disabled: false,
+    devider: false
+  },
+  {
+    label: 'Import Library...',
+    disabled: false,
+    devider: false
+  }
+];
 
 export default class DrawerOpenRightExample extends React.Component {
 
@@ -13,6 +107,14 @@ export default class DrawerOpenRightExample extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     this.setState({open: nextProps.open});
+  }
+  renderMenuItems() {
+    return list.map((item, index) => {
+      return (<div key={index}>
+        <MenuItem disabled={item.disabled}> {item.label}</MenuItem>
+        {item.devider && <Divider/>}
+      </div>);
+    });
   }
 
   handleToggle() {
@@ -26,13 +128,12 @@ export default class DrawerOpenRightExample extends React.Component {
                 docked={false}
                 onRequestChange={::this.handleToggle}
                 open={this.state.open} >
-          <MenuItem> Create Report</MenuItem>
-          <MenuItem> Create Inventory</MenuItem>
-          <MenuItem> Insert Results as Comments</MenuItem>
-          <MenuItem> Remove pdfToolbox Comments...</MenuItem>
-          <MenuItem> CreateReport</MenuItem>
+          {::this.renderMenuItems()}
+
+
         </Drawer>
       </div>
     );
   }
 }
+
