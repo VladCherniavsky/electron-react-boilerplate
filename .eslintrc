@@ -2,21 +2,41 @@
   "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module",
-    "allowImportExportEverywhere": true
+    "allowImportExportEverywhere": true,
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
-  "extends": "airbnb",
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
+  "plugins": [
+    "flowtype",
+    "flowtype-errors",
+    "import",
+    "promise",
+    "compat",
+    "react",
+    "prefer-bind-operator"
+  ],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true,
+    "es6": true
   },
   "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "prefer-bind-operator/prefer-bind-operator": 2,
     "arrow-parens": ["off"],
     "compat/compat": "error",
     "consistent-return": "off",
     "comma-dangle": "off",
     "flowtype-errors/show-errors": "error",
     "generator-star-spacing": "off",
-    "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": "off",
     "no-console": "off",
     "no-use-before-define": "off",
@@ -30,20 +50,23 @@
     }],
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "max-len": ["error", {
+      "ignoreComments": true,
+      "ignoreTemplateLiterals": true,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": true
+    }],
+    "no-invalid-this": 0,
+    "require-jsdoc": 0
   },
-  "plugins": [
-    "flowtype",
-    "flowtype-errors",
-    "import",
-    "promise",
-    "compat",
-    "react"
-  ],
   "settings": {
     "import/resolver": {
       "webpack": {
         "config": "webpack.config.eslint.js"
+      },
+      "node": {
+        "paths": ["app"]
       }
     }
   }

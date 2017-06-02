@@ -1,0 +1,93 @@
+.wrapper {
+  background-color: #545454;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+.controls {
+  position: relative;
+}
+.content {
+  width: auto;
+  padding: 10px;
+  margin: 10px;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  position: relative;
+  overflow-y: auto;
+}
+
+.input {
+  text-align: right;
+  bottom: 5px;
+  right: 20px;
+  width: 30%;
+  float: right;
+  display: inline-block;
+  position: relative;
+  div {
+	width: auto !important;
+  }
+}
+.dropdown {
+  width: 30%;
+  position: absolute;
+  text-align: left;
+  bottom: 0px;
+  left: 0px;
+  display: inline-block;
+}
+.centeredBtns {
+  margin-left: 0;
+  margin-right: 0;
+  bottom: 5px;
+  display: inline-block;
+  position: absolute;
+  width: 30%;
+
+}
+
+.list {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  text-align: left;
+  background-color: white;
+  overflow-y: auto;
+}
+
+ul {
+  color: black;background-color: #e2e2e2;
+  padding-left: 0px;
+  li {
+	i {
+	  margin-left: 5px;
+	  margin-right: 5px;
+	  &:hover {
+		cursor: pointer;
+	  }
+	}
+	text-align: left;
+	&:hover {
+	  background-color: #888585;
+	}
+  }
+
+}
+hr {
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+.nestedList {
+  background-color: white;
+  padding-left: 5%;
+  li {
+	&:hover {
+	  background-color: white;
+	}
+  }
+}
+.clearFix {
+  clear: both;
+}
