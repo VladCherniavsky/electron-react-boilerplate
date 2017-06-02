@@ -126,6 +126,7 @@ export default class DrawerOpenRightExample extends React.Component {
       <div>
         <Drawer openSecondary={true}
                 docked={false}
+                width="30%"
                 onRequestChange={::this.handleToggle}
                 open={this.state.open} >
           {::this.renderMenuItems()}
