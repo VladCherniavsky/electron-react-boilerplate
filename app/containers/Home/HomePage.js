@@ -49,7 +49,7 @@ export default class HomePage extends Component {
   state: {
     list: []
   };
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = {list: list};
   }

@@ -10,7 +10,9 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+
+/* eslint-disable global-require */
+import {app, BrowserWindow} from 'electron';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -20,7 +22,8 @@ if (process.env.NODE_ENV === 'production') {
   sourceMapSupport.install();
 }
 
-if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+if (process.env.NODE_ENV === 'development'
+  || process.env.DEBUG_PROD === 'true') {
   require('electron-debug')();
   const path = require('path');
   const p = path.join(__dirname, '..', 'app', 'node_modules');
@@ -36,7 +39,9 @@ const installExtensions = async () => {
   ];
 
   return Promise
-    .all(extensions.map(name => installer.default(installer[name], forceDownload)))
+    .all(extensions.map(name => {
+      return installer.default(installer[name], forceDownload);
+    }))
     .catch(console.log);
 };
 
@@ -55,7 +60,8 @@ app.on('window-all-closed', () => {
 
 
 app.on('ready', async () => {
-  if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+  if (process.env.NODE_ENV === 'development'
+    || process.env.DEBUG_PROD === 'true') {
     await installExtensions();
   }
 
