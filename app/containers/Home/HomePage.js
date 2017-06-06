@@ -109,7 +109,7 @@ export default class HomePage extends Component {
           <br/>
 
           <div className={style.list}>
-            <NestedList items = {list}/>
+            <NestedList items = {list} />
 
           </div>
         </div>
