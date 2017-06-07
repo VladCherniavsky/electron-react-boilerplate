@@ -8,40 +8,9 @@ import LabelOutlineIcon from 'material-ui/svg-icons/action/label-outline';
 import style from './style.scss';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
-import FlagIcon from 'material-ui/svg-icons/content/flag';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-
-
-const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left"
-  >
-    <FlagIcon />
-  </IconButton>
-);
-
-const rightIconButton = (
-  <span>
-    <IconButton tooltip="Edit"
-                touch={true}
-                tooltipPosition="top-left">
-      <EditIcon/>
-    </IconButton>
-
-    <IconMenu iconButtonElement={iconButtonElement}>
-      <MenuItem>Reply</MenuItem>
-      <MenuItem>Forward</MenuItem>
-      <MenuItem>Delete</MenuItem>
-    </IconMenu>
-
-  </span>
-
-
-);
-
+import FlagIconMenu from '../FlagIconMenu';
+import Dialog from '../Dialog';
+import Divider from 'material-ui/Divider';
 
 
 export default class ListExampleNested extends React.Component {
@@ -50,8 +19,9 @@ export default class ListExampleNested extends React.Component {
     this.state = {
       listItems: this.props.items
     };
+    console.log('this', this);
   }
-  handleOnHover = (itemIndex, parentIndex) => {
+  handleOnClick = (itemIndex, parentIndex) => {
     return (event) => {
       const list = this.state.listItems;
       list.forEach((item) => {
@@ -66,20 +36,46 @@ export default class ListExampleNested extends React.Component {
         ...this.state,
         listItems: list
       });
+    };
+  };
 
-    };
-  };
-  handleOnMouseLeave = (itemIndex, parentIndex) => {
-    return (event) => {
-      const list = this.state.listItems;
-      list[parentIndex].items[itemIndex].isHovered = false;
-      console.log('list', list);
-      this.setState({
-        ...this.state,
-        listItems: list
-      });
-    };
-  };
+  dialogContent = (
+    <div className={style.contentWrapper}>
+
+      <div className={style.flexContainer}>
+        <div className={style.contentLeft}></div>
+        <div className={style.contentRight}></div>
+      </div>
+      <Divider/>
+
+      <div className={style.flexContainer}>
+        <div className={style.contentFooter}></div>
+      </div>
+
+
+
+
+    </div>
+  );
+
+  handleOpenDialog() {
+    console.log('this.refs.dialog.handleOpen', this.refs);
+    this.refs.dialog.handleOpen(this.dialogContent);
+  }
+
+  rightClickButtons = (
+    <div className={style.listItemRightButtons}>
+      <IconButton tooltip="Edit"
+                  touch={true}
+                  tooltipPosition="top-left"
+                  onTouchTap={::this.handleOpenDialog}
+      >
+        <EditIcon/>
+      </IconButton>
+      <FlagIconMenu/>
+
+    </div>
+  );
 
   handleNestedListToggle = (item) => {
     this.setState({
@@ -92,16 +88,16 @@ export default class ListExampleNested extends React.Component {
       <ListItem key={index}
                 primaryText={item.label}
                 leftIcon={<LabelOutlineIcon />}
-                onClick={this.handleOnHover(index, parentIndex)}
-                rightIconButton={item.isHovered && rightIconButton}
-                //onMouseLeave={this.handleOnMouseLeave(index, parentIndex)}
+                onClick={this.handleOnClick(index, parentIndex)}
                  secondaryText={
                    item.isHovered &&
                    <span className={style.secondaryText}>
                      {item.secondaryText}
                    </span>
                  }
-                secondaryTextLines={2}/>
+                secondaryTextLines={2}>
+        {item.isHovered && this.rightClickButtons}
+      </ListItem>
     );
   };
   renderItems = (item, index) => {
@@ -122,6 +118,7 @@ export default class ListExampleNested extends React.Component {
           {this.state.listItems.length > 0
           && this.state.listItems.map(this.renderItems)}
         </List>
+        <Dialog ref="dialog" title="callas pdf Toolbox: Edit Check"/>
       </div>
     );
   }
