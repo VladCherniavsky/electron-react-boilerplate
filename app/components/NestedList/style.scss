@@ -9,38 +9,78 @@
 .contentLeft {
   border-right: 1px solid rgba(224, 224, 224, 1);;
   box-sizing: border-box;
-  display: inline-flex;
-  width: 24%;
-  height: 70px;
+  width: 30%;
 }
 
 .contentRight {
   border-left: 1px solid rgba(224, 224, 224, 1);
   box-sizing: border-box;
-  display: inline-flex;
-  width: 75.5%;
-  height: 70px;
+
+  width: 69.5%;
+
+  .topBlock {
+  max-height: 35%;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(224, 224, 224, 1);
+	display: flex;
+	justify-content: space-between;
+	.leftBlock{
+	  border-right: 1px solid rgba(224, 224, 224, 1);;
+	  width: 49%;
+	  display: inline-block;
+	  box-sizing: border-box;
+	  overflow-y: auto;
+	}
+
+	.rightBlock {
+	  border-left: 1px solid rgba(224, 224, 224, 1);
+	  box-sizing: border-box;
+	  width: 49%;
+	  display: inline-block;
+	  overflow-y: auto;
+	}
+  }
+
+  .middleBlock {
+	padding-left: 1%;
+	width: 100%;
+	.notificationMessage {
+	  border: 1px solid rgba(224, 224, 224, 1);
+	  margin: 1%;
+	  padding: 1%;
+	  background-color: antiquewhite;
+
+	}
+	.removeBtn {
+	  float: right;
+	}
+
+	.dropdownWrapper {
+	  width: 25%;
+	}
+  }
+
+
 }
 
 .contentFooter {
   box-sizing: border-box;
-  width: 100%;
-  height: 30px;
-
+  padding-top: 10px;
 }
 
 .contentWrapper {
   position: relative;
-  div {
-	&:first-child {
-	  padding-bottom: 10px;
-	}
-  }
 }
 
 .flexContainer {
   display: flex;
   justify-content: space-between;
+}
 
-
+label {
+  color: black;
+}
+.clearfix {
+  clear: both;
 }

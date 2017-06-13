@@ -4,11 +4,13 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import style from './style.scss';
+import {exec} from 'child_process';
+import {remote} from 'electron';
 
 const customContentStyle = {
   width: '90%',
-  maxWidth: '100%',
+  maxWidth: '100%'
 };
 
 /**
@@ -26,12 +28,39 @@ export default class DialogExampleCustomWidth extends React.Component {
     });
   };
 
-  handleClose = () => {
-    this.setState({open: false});
-  };
+  handleClose() {
+    this.setState({
+      ...this.state,
+      open: false
+    });
+  }
+
+  handleUsega() {
+    const BrowserWindow = remote.BrowserWindow;
+    const win = new BrowserWindow({ width: 800, height: 600 });
+    win.webContents.on('did-finish-load', ()=>{
+      win.show();
+      win.focus();
+    });
+    win.loadURL('google.com');
+    const proccess = exec('ping google.com');
+
+    proccess.stdout.on('data', function(data) {
+      console.log('data', data);
+    });
+  }
+
+
 
   render() {
     const actions = [
+      <FlatButton
+        label="Usage"
+        style={{float: 'left'}}
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.handleUsega}
+      />,
       <FlatButton
         label="Cancel"
         primary={true}
@@ -48,9 +77,10 @@ export default class DialogExampleCustomWidth extends React.Component {
     return (
       <div>
         <Dialog
+          autoScrollBodyContent={true}
           title={this.props.title}
           actions={actions}
-          modal={true}
+          onRequestClose={::this.handleClose}
           contentStyle={customContentStyle}
           open={this.state.open}
         >
