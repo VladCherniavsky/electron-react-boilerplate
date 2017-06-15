@@ -8,8 +8,6 @@ import IconMenu from 'material-ui/IconMenu';
 import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 
-
-
 const iconButtonElement = (
   <IconButton
     touch={true}
@@ -26,14 +24,13 @@ const iconButtonElement = (
 export default class FlagIconMenu extends React.Component {
 
   render() {
-    return (
+    return('Hi');
+    /*return (
       <IconMenu iconButtonElement={iconButtonElement}
                 useLayerForClickAway={true}
                       touchTapCloseDelay={0}>
       <MenuItem><Checkbox label="Favorite"/></MenuItem>
       <MenuItem><Checkbox label="Workspace"/></MenuItem>
-    </IconMenu>);
+    </IconMenu>);*/
   }
 }
-
-

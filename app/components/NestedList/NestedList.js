@@ -8,7 +8,7 @@ import LabelOutlineIcon from 'material-ui/svg-icons/action/label-outline';
 import style from './style.scss';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
-import FlagIconMenu from '../FlagIconMenu';
+//import FlagIconMenu from '../FlagIconMenu';
 import Dialog from '../Dialog';
 import Divider from 'material-ui/Divider';
 import Dropdown from '../Dropdown';
@@ -16,8 +16,6 @@ import Checkbox from 'material-ui/Checkbox';
 import TextareaDropdown from '../TextareaDropdown';
 import GroupList from '../GroupList';
 import HintBlock from '../HintBlock';
-import CameraIcon from 'material-ui/svg-icons/image/camera';
-import RemoveIcon from 'material-ui/svg-icons/navigation/cancel';
 import LockIcon from 'material-ui/svg-icons/action/lock';
 import TextField from 'material-ui/TextField';
 import Group from '../Group';
@@ -195,7 +193,7 @@ export default class ListExampleNested extends React.Component {
       >
         <EditIcon/>
       </IconButton>
-      <FlagIconMenu/>
+      {/*<FlagIconMenu/>*/}
 
     </div>
   );
