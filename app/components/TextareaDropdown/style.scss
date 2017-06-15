@@ -7,18 +7,20 @@
 .content {
   box-sizing: border-box;
   display: inline-block;
-  width: 75%;
   height: 100%;
-  border-right: 1px solid rgba(224, 224, 224, 1);
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  padding: 0.5em;
 }
 
 .rightColumn {
   box-sizing: border-box;
   display: inline-block;
-  position: absolute;
+  position: relative;
+  text-align: center;
+  width: 100%;
 
 }
 .dropdown {
   color: black;
-  float: right;
+  display: inline-block;
 }

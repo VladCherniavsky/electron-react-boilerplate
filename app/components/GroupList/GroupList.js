@@ -8,10 +8,17 @@ import FormatSizeIcon from 'material-ui/svg-icons/editor/format-size';
 import PhotoIcon from 'material-ui/svg-icons/image/photo';
 import StyleIcon from 'material-ui/svg-icons/image/style';
 import PaletteIcon from 'material-ui/svg-icons/image/palette';
+import style from './style.scss';
 
 
 const GroupList = () => (
-  <List>
+  <List className={style.list}>
+    <ListItem primaryText="All" leftIcon={<span>...</span>}/>
+    <ListItem primaryText="Text" leftIcon={<TextFieldsIcon/>}/>
+    <ListItem primaryText="Font" leftIcon={<FormatSizeIcon/>}/>
+    <ListItem primaryText="Image" leftIcon={<PhotoIcon/>}/>
+    <ListItem primaryText="Colors" leftIcon={<StyleIcon/>}/>
+    <ListItem primaryText="ICC colors spaces" leftIcon={<PaletteIcon/>}/>
     <ListItem primaryText="All" leftIcon={<span>...</span>}/>
     <ListItem primaryText="Text" leftIcon={<TextFieldsIcon/>}/>
     <ListItem primaryText="Font" leftIcon={<FormatSizeIcon/>}/>

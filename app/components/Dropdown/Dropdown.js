@@ -23,15 +23,14 @@ export default class Dropdown extends React.Component {
     const {
       style,
       disabled,
-      className,
-      autoWidth
+      passedClassName
     } = this.props;
     return (
       <DropDownMenu value={this.state.value}
                     onChange={this.handleChange}
-                    autoWidth={autoWidth}
+                    autoWidth={true}
                     disabled={disabled ? disabled : false}
-                    className={className ? className : styleScss.dropdown}
+                    className={passedClassName ? passedClassName : styleScss.dropdown}
                     labelStyle={style ? style : styleObj}>
         {this.props.options && this.props.options.map((item, index) => {
           return <MenuItem value={item.key ? item.key : item}

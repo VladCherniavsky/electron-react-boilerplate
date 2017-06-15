@@ -23,7 +23,7 @@ export default class TextareaDropwdown extends React.Component {
 
         <div className={style.rightColumn}>
           <Dropdown options={[1,2,3,4,5]}
-                    className={style.dropdown}
+                    passedClassName={style.dropdown}
           />
 
         </div>

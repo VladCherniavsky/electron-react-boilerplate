@@ -15,11 +15,12 @@ import Dropdown from '../Dropdown';
 import Checkbox from 'material-ui/Checkbox';
 import TextareaDropdown from '../TextareaDropdown';
 import GroupList from '../GroupList';
-import ErrorOutlineIcon from 'material-ui/svg-icons/alert/error-outline.js';
+import HintBlock from '../HintBlock';
 import CameraIcon from 'material-ui/svg-icons/image/camera';
 import RemoveIcon from 'material-ui/svg-icons/navigation/cancel';
 import LockIcon from 'material-ui/svg-icons/action/lock';
 import TextField from 'material-ui/TextField';
+import Group from '../Group';
 
 
 export default class ListExampleNested extends React.Component {
@@ -53,26 +54,29 @@ export default class ListExampleNested extends React.Component {
 
       <div className={style.flexContainer}>
         <div className={style.contentLeft}>
-          <br/>
           <label>When check fires, report as:</label>
-          <Dropdown options={[1, 2, 3]}
-                    style={{
-                      color: 'black',
-                    }}
+          <Dropdown options={[
+            {
+              label: 'Black Text (100% Gray) is smaller than 12 pt',
+              key: 1
+            },
+            {
+              label: 'Black Text (100% Gray) is smaller than 12 pt',
+              key: 2
+            }
+            ]}
                     disabled={false}
+                    passedClassName={style.dropdown}
           />
-          <br/>
-          <br/>
           <Checkbox disabled={false}
                     label="When it does not fire, report as"/>
           <br/>
-
           <label>Explanation for this check:</label>
-          <TextareaDropdown/>
           <br/>
+          <TextareaDropdown/>
           <Checkbox disabled={false}
                     label="Fire if any condition is met"/>
-          <br/>
+
 
           <label>Apply this check to:</label>
           <Checkbox disabled={false}
@@ -106,101 +110,70 @@ export default class ListExampleNested extends React.Component {
         <div className={style.contentRight}>
           <div className={style.topBlock}>
             <div className={style.leftBlock}>
+              <div className={style.header}>
+                <label > Group: </label>
+              </div>
               <GroupList/>
             </div>
             <div className={style.rightBlock}>
+              <div className={style.header}>
+                <label > Property: </label>
+                <TextField
+                  className={style.findInput}
+                  hintText="Find"
+                />
+              </div>
               <GroupList/>
             </div>
           </div>
 
           <div className={style.middleBlock}>
-            <div className={style.notificationMessage}>
-              <span>
-                <ErrorOutlineIcon/>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-
-              </span>
-            </div>
-            <label>Group, colors:</label>
-            <br/>
-            <br/>
-            <div>
-              <CameraIcon/> <label> Is DeviceCMYK</label>
-              <IconButton className={style.removeBtn}> <RemoveIcon/></IconButton>
-              <span className={style.clearfix}> </span>
-            </div>
-
-
-
-            <br />
-            <div className={style.dropdownWrapper}>
+            <HintBlock/>
+            <Group label="Group, colors: "
+                   description="Object uses CMYK only  (no spot colors)">
               <Dropdown options={[{label: 'Is not true', key: 1}]}
-                        style={{
-                          color: 'black',
-                        }}
-                        disabled={true}
+                             style={{
+                               color: 'black',
+                             }}
+                             disabled={false}
               />
+            </Group>
 
-            </div>
-            <Divider/>
+            <Group label="Group, colors: "
+                   description="Number of non-zero CMYK components">
+              <div className={style.inputs}>
+                <TextField
+                  hintText="Hint Text"
+                  floatingLabelText="Number"
+                />
+                <TextField
+                  hintText="Hint Text"
+                  floatingLabelText="Plus/minus"
+                />
 
-            <br/>
-            <br/>
+              </div>
 
-            <label>Group, colors:</label>
-            <br/>
-            <br/>
-
-            <div>
-              <CameraIcon/> <label> Number of non-zero CMYK components</label>
-              <IconButton className={style.removeBtn}> <RemoveIcon/></IconButton>
-              <span className={style.clearfix}> </span>
-            </div>
-
-            <TextField
-              hintText="Hint Text"
-              floatingLabelText="Number"
-            /><br />
-            <TextField
-              hintText="Hint Text"
-              floatingLabelText="Plus/minus"
-            /><br />
+            </Group>
 
 
-            <Divider/>
-            <br/>
-            <label>Group, colors:</label>
-            <br/>
-            <br/>
-            <div>
-              <CameraIcon/> <label> Object uses CMYK only  (no spot colors)</label>
-              <IconButton className={style.removeBtn}> <RemoveIcon/></IconButton>
-              <span className={style.clearfix}> </span>
-            </div>
-            <div className={style.dropdownWrapper}>
+            <Group label="Group, colors: "
+                   description="Object uses CMYK only  (no spot colors)">
               <Dropdown options={[{label: 'Is true', key: 1}]}
                         style={{
                           color: 'black',
                         }}
-                        disabled={true}
+                        disabled={false}
               />
-
-            </div>
-            <br /> <br />
-
-
+            </Group>
           </div>
-
-
         </div>
       </div>
       <Divider/>
 
       <div className={style.flexContainer}>
         <div className={style.contentFooter}>
-          <LockIcon/> This check is locked (all profiles that reference it are locked)
+          <LockIcon/> This check is locked
+          (all profiles that reference it are locked)
         </div>
       </div>
 
