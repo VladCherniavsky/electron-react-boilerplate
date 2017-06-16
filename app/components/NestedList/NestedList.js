@@ -21,6 +21,10 @@ import TextField from 'material-ui/TextField';
 import Group from '../Group';
 
 
+import MenuItem from 'material-ui/MenuItem';
+import FlagIcon from 'material-ui/svg-icons/content/flag';
+import IconMenu from 'material-ui/IconMenu';
+
 export default class ListExampleNested extends React.Component {
   constructor(props) {
     super(props);
@@ -193,7 +197,20 @@ export default class ListExampleNested extends React.Component {
       >
         <EditIcon/>
       </IconButton>
-      {/*<FlagIconMenu/>*/}
+      <IconMenu iconButtonElement={<IconButton
+        touch={true}
+        tooltip="more"
+        tooltipPosition="bottom-left"
+        iconStyle={{color: 'red'}}
+
+      >
+        <FlagIcon />
+      </IconButton>}
+                useLayerForClickAway={true}
+                touchTapCloseDelay={0}>
+        <MenuItem><Checkbox label="Favorite"/></MenuItem>
+        <MenuItem><Checkbox label="Workspace"/></MenuItem>
+      </IconMenu>
 
     </div>
   );
