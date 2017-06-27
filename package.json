@@ -1,6 +1,6 @@
 {
   "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "productName": "pdfToolbox",
   "version": "0.12.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "browserslist": "electron 1.6",
   "build": {
-    "productName": "ElectronReact",
+    "productName": "pdfToolbox",
     "appId": "org.develar.ElectronReact",
     "files": [
       "dist/",
@@ -69,6 +69,10 @@
     "directories": {
       "buildResources": "resources",
       "output": "release"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "repository": {
@@ -139,7 +143,7 @@
     "css-loader": "^0.28.3",
     "devtron": "^1.4.0",
     "electron": "^1.6.10",
-    "electron-builder": "^18.0.1",
+    "electron-builder": "^19.8.0",
     "electron-devtools-installer": "^2.2.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
