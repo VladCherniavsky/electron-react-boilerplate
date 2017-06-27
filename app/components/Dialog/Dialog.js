@@ -37,7 +37,14 @@ export default class DialogExampleCustomWidth extends React.Component {
 
   handleUsega() {
     const BrowserWindow = remote.BrowserWindow;
-    const win = new BrowserWindow({ width: 800, height: 600 });
+    const win = new BrowserWindow({width: 800, height: 600});
+    const html = [
+      "<body>",
+      "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>",
+      "</body>",
+    ].join('');
+
+    win.loadURL('data:text/html;charset=utf-8,' + encodeURI(html));
     win.webContents.on('did-finish-load', ()=>{
       win.show();
       win.focus();
@@ -49,7 +56,6 @@ export default class DialogExampleCustomWidth extends React.Component {
       console.log('data', data);
     });
   }
-
 
 
   render() {
@@ -64,13 +70,13 @@ export default class DialogExampleCustomWidth extends React.Component {
       <FlatButton
         label="Cancel"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={::this.handleClose}
       />,
       <FlatButton
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={::this.handleClose}
       />,
     ];
 

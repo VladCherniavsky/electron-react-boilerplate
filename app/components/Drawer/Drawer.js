@@ -2,6 +2,7 @@
  * Created by User on 6/1/2017.
  */
 import React from 'react';
+import ReactDOM from 'react-dom'
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
@@ -108,10 +109,19 @@ export default class DrawerOpenRightExample extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({open: nextProps.open});
   }
+  openFileUpload() {
+    const fileUploadDom = ReactDOM.findDOMNode(this.refs.fileUpload);
+    fileUploadDom.click();
+  }
   renderMenuItems() {
     return list.map((item, index) => {
       return (<div key={index}>
-        <MenuItem disabled={item.disabled}> {item.label}</MenuItem>
+        <MenuItem disabled={item.disabled} onClick={::this.openFileUpload}> {item.label}
+          <input
+            ref="fileUpload"
+            type="file"
+            style={{"display" : "none"}}/>
+        </MenuItem>
         {item.devider && <Divider/>}
       </div>);
     });

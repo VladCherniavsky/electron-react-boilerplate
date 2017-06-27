@@ -8,7 +8,7 @@ import LabelOutlineIcon from 'material-ui/svg-icons/action/label-outline';
 import style from './style.scss';
 import IconButton from 'material-ui/IconButton';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
-//import FlagIconMenu from '../FlagIconMenu';
+import FlagIconMenu from '../FlagIconMenu';
 import Dialog from '../Dialog';
 import Divider from 'material-ui/Divider';
 import Dropdown from '../Dropdown';
@@ -197,11 +197,12 @@ export default class ListExampleNested extends React.Component {
       >
         <EditIcon/>
       </IconButton>
-      <IconMenu iconButtonElement={<IconButton
+      <FlagIconMenu/>
+      {/*<IconMenu iconButtonElement={<IconButton
         touch={true}
         tooltip="more"
         tooltipPosition="bottom-left"
-        iconStyle={{color: 'red'}}
+        iconStyle={{color: 'white'}}
 
       >
         <FlagIcon />
@@ -210,7 +211,7 @@ export default class ListExampleNested extends React.Component {
                 touchTapCloseDelay={0}>
         <MenuItem><Checkbox label="Favorite"/></MenuItem>
         <MenuItem><Checkbox label="Workspace"/></MenuItem>
-      </IconMenu>
+      </IconMenu>*/}
 
     </div>
   );
