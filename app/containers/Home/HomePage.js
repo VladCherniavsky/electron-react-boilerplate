@@ -10,7 +10,8 @@ import FilterVintage from 'material-ui/svg-icons/image/filter-vintage';
 import Transform from 'material-ui/svg-icons/image/transform';
 import NestedList from '../../components/NestedList';
 import list from './contentList';
-
+import speech from 'electron-speech';
+import * as speechService from '../../services/speechService';
 
 const options = [
   {key: 1, label: 'Favorites'},
@@ -70,13 +71,17 @@ export default class HomePage extends Component {
         <Header></Header>
         <div className={style.content}>
           <div className={style.controls}>
-            <div className={style.dropdown}>
+            <div className={style.dropdown}
+                 data-type="dropdown"
+                 onMouseEnter={speechService.onHover(this)}>
               <Dropdown options={options}></Dropdown>
 
             </div>
 
             <div className={style.centeredBtns}>
-              <IconButton iconStyle={styleObj.btn}>
+              <IconButton iconStyle={styleObj.btn}
+                          name="hello"
+                          onMouseEnter={speechService.onHover}>
                 <CameraIcon />
               </IconButton>
 
@@ -90,7 +95,9 @@ export default class HomePage extends Component {
 
             </div>
 
-            <div className={style.input}>
+            <div className={style.input}
+                 data-type="input"
+                 onMouseEnter={speechService.onHover(this)}>
               <TextField floatingLabelText="Find"
                          floatingLabelStyle={styleObj.hintStyle}
                          hintStyle={styleObj.hintStyle}

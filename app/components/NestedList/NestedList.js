@@ -19,6 +19,7 @@ import HintBlock from '../HintBlock';
 import LockIcon from 'material-ui/svg-icons/action/lock';
 import TextField from 'material-ui/TextField';
 import Group from '../Group';
+import * as speechService from '../../services/speechService';
 
 
 import MenuItem from 'material-ui/MenuItem';
@@ -198,20 +199,6 @@ export default class ListExampleNested extends React.Component {
         <EditIcon/>
       </IconButton>
       <FlagIconMenu/>
-      {/*<IconMenu iconButtonElement={<IconButton
-        touch={true}
-        tooltip="more"
-        tooltipPosition="bottom-left"
-        iconStyle={{color: 'white'}}
-
-      >
-        <FlagIcon />
-      </IconButton>}
-                useLayerForClickAway={true}
-                touchTapCloseDelay={0}>
-        <MenuItem><Checkbox label="Favorite"/></MenuItem>
-        <MenuItem><Checkbox label="Workspace"/></MenuItem>
-      </IconMenu>*/}
 
     </div>
   );
@@ -227,6 +214,7 @@ export default class ListExampleNested extends React.Component {
       <ListItem key={index}
                 primaryText={item.label}
                 leftIcon={<LabelOutlineIcon />}
+                onMouseEnter={speechService.onHover(this)}
                 onClick={this.handleOnClick(index, parentIndex)}
                  secondaryText={
                    item.isHovered &&
@@ -243,6 +231,7 @@ export default class ListExampleNested extends React.Component {
     return (
       <ListItem primaryText={item.label}
                 key={index}
+                onMouseEnter={speechService.onHover(this)}
                 leftIcon={<LabelIcon />}
                 primaryTogglesNestedList={true}
                 nestedItems={
