@@ -5,11 +5,14 @@ import $ from 'jquery';
 const events = [];
 let speekObj;
 
-export const onHover = (context) => {
+export const onHover = (elementDesc) => {
   return function(event) {
-    console.log(event.target.dataset);
     event.persist();
     event.stopPropagation();
+    console.log($(event.target))
+    if(elementDesc) {
+      event.elementDesc = elementDesc;
+    }
     events.push(event);
     if (events.length > 3) {
       events.splice(0, events.length - 2);
@@ -19,7 +22,6 @@ export const onHover = (context) => {
     }
     if (!speekObj.isSpeaking()) {
       const ev = events[events.length - 1];
-
       let resultString = getStringToSpeak(ev);
       speekObj.speak(resultString);
     }
@@ -48,7 +50,14 @@ function SpeekConstructor() {
 
 function getStringToSpeak(event) {
   let resultString;
-  const text = $(event.target).text();
+  if (event.elementDesc) {
+    resultString = event.elementDesc.type + '. ';
+  }
+
+  let text = $(event.target).text();
+  if(!text) {
+    text = $(event.target).next().text();
+  }
   if (text) {
     if(!resultString) {
       resultString = text;

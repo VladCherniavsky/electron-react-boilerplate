@@ -22,10 +22,6 @@ import Group from '../Group';
 import * as speechService from '../../services/speechService';
 
 
-import MenuItem from 'material-ui/MenuItem';
-import FlagIcon from 'material-ui/svg-icons/content/flag';
-import IconMenu from 'material-ui/IconMenu';
-
 export default class ListExampleNested extends React.Component {
   constructor(props) {
     super(props);
@@ -70,34 +66,47 @@ export default class ListExampleNested extends React.Component {
             ]}
                     disabled={false}
                     passedClassName={style.dropdown}
+                    onMouseEnter={speechService.onHover({type: 'drodown'})}
           />
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     label="When it does not fire, report as"/>
           <br/>
           <label>Explanation for this check:</label>
           <br/>
           <TextareaDropdown/>
-          <Checkbox disabled={false}
-                    label="Fire if any condition is met"/>
+
+            <Checkbox disabled={false}
+                      onMouseEnter={speechService.onHover({type: 'Checkbox'})}
+                      label="Fire if any condition is met"/>
+
+
 
 
           <label>Apply this check to:</label>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     checked={true}
                     label="Page contents"/>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     label="Appearance of annotations"/>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     label="Appearance of form field"/>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     label="Soft masks"/>
           <Checkbox disabled={false}
                     checked={true}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     label="Current file"/>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     checked={false}
                     label="Embedded files"/>
           <Checkbox disabled={false}
+                    onMouseEnter={speechService.onHover({type: 'Checkbox'})}
                     checked={false}
                     label="Ignore objects outside"/>
 
@@ -193,6 +202,7 @@ export default class ListExampleNested extends React.Component {
     <div className={style.listItemRightButtons}>
       <IconButton tooltip="Edit"
                   touch={true}
+                  onMouseEnter={speechService.onHover({type: 'button'})}
                   tooltipPosition="top-left"
                   onTouchTap={::this.handleOpenDialog}
       >
@@ -214,7 +224,7 @@ export default class ListExampleNested extends React.Component {
       <ListItem key={index}
                 primaryText={item.label}
                 leftIcon={<LabelOutlineIcon />}
-                onMouseEnter={speechService.onHover(this)}
+                onMouseEnter={speechService.onHover()}
                 onClick={this.handleOnClick(index, parentIndex)}
                  secondaryText={
                    item.isHovered &&
@@ -231,7 +241,7 @@ export default class ListExampleNested extends React.Component {
     return (
       <ListItem primaryText={item.label}
                 key={index}
-                onMouseEnter={speechService.onHover(this)}
+                onMouseEnter={speechService.onHover()}
                 leftIcon={<LabelIcon />}
                 primaryTogglesNestedList={true}
                 nestedItems={

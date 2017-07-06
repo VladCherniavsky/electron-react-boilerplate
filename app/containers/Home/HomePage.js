@@ -10,7 +10,6 @@ import FilterVintage from 'material-ui/svg-icons/image/filter-vintage';
 import Transform from 'material-ui/svg-icons/image/transform';
 import NestedList from '../../components/NestedList';
 import list from './contentList';
-import speech from 'electron-speech';
 import * as speechService from '../../services/speechService';
 
 const options = [
@@ -61,9 +60,6 @@ export default class HomePage extends Component {
       this.setState({list: list});
     };
   }
-  onMouseEnter = (event) => {
-    console.log(event.target.dataset);
-  }
 
 
   render() {
@@ -73,8 +69,8 @@ export default class HomePage extends Component {
         <Header></Header>
         <div className={style.content}>
           <div className={style.controls}>
-            <div className={style.dropdown} data-type="dropdown"
-                 onMouseEnter={speechService.onHover(this)}>
+            <div className={style.dropdown}
+                 onMouseEnter={speechService.onHover({type: 'drodown'})}>
 
               <Dropdown options={options} />
 
@@ -98,8 +94,7 @@ export default class HomePage extends Component {
             </div>
 
             <div className={style.input}
-                 data-type="input"
-                 onMouseEnter={speechService.onHover(this)}>
+                 onMouseEnter={speechService.onHover({type: 'input'})}>
               <TextField floatingLabelText="Find"
                          floatingLabelStyle={styleObj.hintStyle}
                          hintStyle={styleObj.hintStyle}
