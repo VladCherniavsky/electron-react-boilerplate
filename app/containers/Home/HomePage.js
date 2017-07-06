@@ -45,7 +45,6 @@ const styleObj = {
 
 };
 
-
 export default class HomePage extends Component {
   state: {
     list: []
@@ -62,6 +61,9 @@ export default class HomePage extends Component {
       this.setState({list: list});
     };
   }
+  onMouseEnter = (event) => {
+    console.log(event.target.dataset);
+  }
 
 
   render() {
@@ -71,10 +73,10 @@ export default class HomePage extends Component {
         <Header></Header>
         <div className={style.content}>
           <div className={style.controls}>
-            <div className={style.dropdown}
-                 data-type="dropdown"
+            <div className={style.dropdown} data-type="dropdown"
                  onMouseEnter={speechService.onHover(this)}>
-              <Dropdown options={options}></Dropdown>
+
+              <Dropdown options={options} />
 
             </div>
 

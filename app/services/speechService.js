@@ -7,6 +7,7 @@ let speekObj;
 
 export const onHover = (context) => {
   return function(event) {
+    console.log(event.target.dataset);
     event.persist();
     event.stopPropagation();
     events.push(event);
